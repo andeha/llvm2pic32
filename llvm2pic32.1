@@ -1,0 +1,26 @@
+.TH LLVM2PIC32 1
+.SH NAME
+llvm2pic32 \- llvm/clang conversion program
+.SH SYNOPSIS
+.B llvm2pic32
+[ \fB\-s\fR \fB\-b\fR <bootloader.hex file> ]
+.IR
+<elf32 file>
+.SH DESCRIPTION
+.I The
+.B
+llvm2pic32
+program reads an Elf-32 file created by the clang compiler and emits an Intel Hex 
+file with the same name as the input file but having a file extension\fB .hex\fR. The 
+generated file can be fed into a Pic32 chip.
+.SH OPTIONS
+.TP
+.BR -s
+Include the additional code sections/segment named ".boot", ".start", ".tlb", 
+".cache" and ".special".
+.TP
+.BR -b \ \fB <bootloader.hex\ file> \fR
+Prepend optional object code into the final image.
+.SH BUGS
+Only programs sized up to 64 kB renders properly.
+
